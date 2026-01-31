@@ -8,6 +8,7 @@ import "./globals.css";
 import { Inter } from "next/font/google";
 import { DataProvider } from "@/lib/data-context";
 import { motion, AnimatePresence } from "framer-motion";
+import { Toaster } from "sonner";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -41,6 +42,7 @@ export default function RootLayout({
     <html lang="en" className={theme === "dark" ? "dark" : ""}>
       <body className={`${inter.className} min-h-screen bg-background text-foreground pb-24 overflow-x-hidden transition-colors duration-500`}>
         <DataProvider>
+          <Toaster richColors position="top-center" />
           <div className="min-h-screen flex flex-col relative w-full">
             {/* Top Premium Navbar */}
             <header className="sticky top-0 w-full bg-white dark:bg-slate-900 border-b border-white dark:border-slate-800/50 z-50 shadow-sm">
