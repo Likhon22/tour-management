@@ -51,7 +51,7 @@ export default function Settings() {
     };
 
     return (
-        <div className="py-8 px-4 max-w-lg mx-auto pb-32">
+        <div className="py-8 px-6 lg:px-10 max-w-7xl mx-auto pb-32">
             <header className="mb-12">
                 <h1 className="text-4xl font-black tracking-tighter text-slate-900 dark:text-white mb-2 font-inter">
                     Trip <span className="text-sky-500">Settings</span>
@@ -99,7 +99,7 @@ export default function Settings() {
                                 value={newParticipant}
                                 onChange={e => setNewParticipant(e.target.value)}
                                 placeholder="Add a friend..."
-                                className="w-full bg-white dark:bg-slate-800/40 border-2 border-transparent focus:border-sky-500 rounded-[2.5rem] pl-8 pr-32 py-6 font-black text-lg focus:outline-none shadow-xl shadow-slate-200/50 dark:shadow-none transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700"
+                                className="w-full bg-white dark:bg-slate-800/40 border-2 border-transparent focus:border-sky-500 rounded-[2.5rem] pl-8 pr-32 py-6 font-black text-lg focus:outline-none shadow-xl shadow-slate-200/50 dark:shadow-none transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700 text-slate-900 dark:text-white"
                             />
                             <button
                                 onClick={addParticipant}
@@ -110,7 +110,7 @@ export default function Settings() {
                             </button>
                         </div>
 
-                        <div className="bg-white dark:bg-slate-800/40 rounded-[3rem] border border-slate-100 dark:border-slate-800/50 overflow-hidden shadow-xl shadow-slate-200/40 dark:shadow-none">
+                        <div className="bg-white dark:bg-slate-800/40 rounded-[3rem] border border-white dark:border-slate-800/50 overflow-hidden shadow-xl shadow-slate-200/40 dark:shadow-none">
                             {!participants.length ? (
                                 <div className="p-16 text-center text-slate-300 flex flex-col items-center gap-4">
                                     <User size={40} className="opacity-20" />
@@ -152,7 +152,7 @@ export default function Settings() {
                                 value={newCategory}
                                 onChange={e => setNewCategory(e.target.value)}
                                 placeholder="New category type..."
-                                className="w-full bg-white dark:bg-slate-800/40 border-2 border-transparent focus:border-orange-500 rounded-[2.5rem] pl-8 pr-32 py-6 font-black text-lg focus:outline-none shadow-xl shadow-slate-200/50 dark:shadow-none transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700"
+                                className="w-full bg-white dark:bg-slate-800/40 border-2 border-transparent focus:border-orange-500 rounded-[2.5rem] pl-8 pr-32 py-6 font-black text-lg focus:outline-none shadow-xl shadow-slate-200/50 dark:shadow-none transition-all placeholder:text-slate-300 dark:placeholder:text-slate-700 text-slate-900 dark:text-white"
                             />
                             <button
                                 onClick={addCategory}
@@ -163,7 +163,7 @@ export default function Settings() {
                             </button>
                         </div>
 
-                        <div className="bg-white dark:bg-slate-800/40 rounded-[3rem] border border-slate-100 dark:border-slate-800/50 overflow-hidden shadow-xl shadow-slate-200/40 dark:shadow-none">
+                        <div className="bg-white dark:bg-slate-800/40 rounded-[3rem] border border-white dark:border-slate-800/50 overflow-hidden shadow-xl shadow-slate-200/40 dark:shadow-none">
                             <div className="max-h-[350px] overflow-y-auto divide-y divide-slate-50 dark:divide-slate-800/40 custom-scrollbar">
                                 {categories.map((c, idx) => (
                                     <motion.div
@@ -177,7 +177,7 @@ export default function Settings() {
                                             <div className="w-10 h-10 rounded-xl bg-slate-50 dark:bg-slate-700/50 flex items-center justify-center">
                                                 <Layers size={18} className="text-slate-400 group-hover:text-orange-500 transition-colors" />
                                             </div>
-                                            <span className={`font-black text-lg tracking-tight ${c.isDefault ? 'text-slate-400 dark:text-slate-600' : 'text-slate-800 dark:text-slate-200'} group-hover:translate-x-1 transition-transform`}>
+                                            <span className="font-black text-lg tracking-tight text-slate-800 dark:text-white group-hover:translate-x-1 transition-transform">
                                                 {c.name}
                                             </span>
                                         </div>

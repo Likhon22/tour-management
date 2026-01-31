@@ -19,7 +19,7 @@ export default function Home() {
   ].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
-    <div className="py-8">
+    <div className="py-8 px-6 lg:px-10 max-w-7xl mx-auto">
       <header className="mb-10 flex justify-between items-end">
         <div>
           <h1 className="text-4xl font-black tracking-tight text-slate-900 dark:text-white mb-1">
@@ -31,14 +31,14 @@ export default function Home() {
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => { setModalType("deposit"); setShowAddModal(true); }}
-            className="bg-emerald-500 text-white p-4 rounded-2xl shadow-lg ring-4 ring-emerald-500/10"
+            className="bg-emerald-500 text-white p-4 rounded-2xl shadow-lg ring-4 ring-emerald-500/10 shadow-emerald-500/20"
           >
             <Coins size={24} />
           </motion.button>
           <motion.button
             whileTap={{ scale: 0.95 }}
             onClick={() => { setModalType("expense"); setShowAddModal(true); }}
-            className="bg-sky-500 text-white p-4 rounded-2xl shadow-lg ring-4 ring-sky-500/10"
+            className="bg-sky-500 text-white p-4 rounded-2xl shadow-lg ring-4 ring-sky-500/10 shadow-sky-500/20"
           >
             <Plus size={24} strokeWidth={3} />
           </motion.button>
@@ -48,18 +48,18 @@ export default function Home() {
       <section>
         <div className="flex items-center gap-2 mb-6">
           <div className="w-1.5 h-6 bg-sky-500 rounded-full"></div>
-          <h2 className="text-xl font-bold text-slate-800 dark:text-slate-200 uppercase tracking-tighter">Activity Log</h2>
+          <h2 className="text-xl font-black text-slate-900 dark:text-white uppercase tracking-tighter">Activity Log</h2>
         </div>
 
         {loading ? (
           <div className="flex flex-col items-center justify-center py-24 gap-4">
             <Loader2 className="animate-spin text-sky-500" size={40} strokeWidth={3} />
-            <p className="text-slate-400 font-medium">Updating log...</p>
+            <p className="text-slate-500 font-black uppercase text-[10px] tracking-[0.2em]">Updating log...</p>
           </div>
         ) : activity.length === 0 ? (
-          <div className="text-center py-20 bg-white dark:bg-slate-800/50 rounded-[2.5rem] border border-slate-100 dark:border-slate-800/50 px-8 sticky-shadow">
+          <div className="text-center py-20 bg-white dark:bg-slate-800/50 rounded-[2.5rem] border border-slate-200 dark:border-slate-800/50 px-8 shadow-xl shadow-slate-200/60 dark:shadow-none">
             <Wallet className="text-sky-400 mx-auto mb-4" size={48} />
-            <h3 className="text-xl font-bold mb-2">No activity yet</h3>
+            <h3 className="text-xl font-bold mb-2 text-slate-900 dark:text-white">No activity yet</h3>
             <p className="text-slate-500 text-sm italic">Add some deposits or expenses to begin!</p>
           </div>
         ) : (
@@ -70,9 +70,9 @@ export default function Home() {
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: idx * 0.03 }}
                 key={item._id}
-                className="bg-white dark:bg-slate-800/40 p-5 rounded-3xl border border-slate-100 dark:border-slate-800/50 flex items-center gap-4 hover:border-sky-200 transition-colors"
+                className="bg-white dark:bg-slate-800/40 p-5 rounded-3xl border border-slate-200 dark:border-slate-800/50 flex items-center gap-4 hover:border-sky-300 transition-all shadow-xl shadow-slate-200/50 dark:shadow-none"
               >
-                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl ${item.type === "deposit" ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-500" : "bg-sky-50 dark:bg-sky-500/10 text-sky-500"
+                <div className={`w-12 h-12 rounded-2xl flex items-center justify-center text-xl shadow-sm ${item.type === "deposit" ? "bg-emerald-50 dark:bg-emerald-500/10 text-emerald-500" : "bg-sky-50 dark:bg-sky-500/10 text-sky-500"
                   }`}>
                   {item.type === "deposit" ? <ArrowUpRight size={24} /> : getEmojiForCategory(item.category?.name)}
                 </div>
@@ -80,7 +80,7 @@ export default function Home() {
                   <h4 className="font-bold text-slate-900 dark:text-white truncate">
                     {item.type === "deposit" ? `Fund from ${item.contributor?.name}` : (item.description || item.category?.name || "Expense")}
                   </h4>
-                  <p className="text-xs text-slate-500 font-medium mt-0.5">
+                  <p className="text-xs text-slate-500 dark:text-slate-400 font-medium mt-0.5">
                     {item.type === "deposit" ? "Deposit" : `${item.category?.name || "General"} • Paid from Fund`}
                   </p>
                 </div>
@@ -102,7 +102,7 @@ export default function Home() {
             <motion.div
               initial={{ y: "100%" }} animate={{ y: 0 }} exit={{ y: "100%" }}
               transition={{ type: "spring", damping: 25, stiffness: 200 }}
-              className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-t-[3rem] sm:rounded-[3rem] p-8 shadow-2xl relative z-10 sm:m-4 overflow-visible"
+              className="bg-white dark:bg-slate-900 w-full max-w-lg rounded-t-[3rem] sm:rounded-[3rem] p-8 shadow-2xl relative z-10 sm:m-4 overflow-visible border border-white dark:border-slate-800"
             >
               <div className="flex justify-between items-center mb-10">
                 <h3 className="text-3xl font-black text-slate-900 dark:text-white">
@@ -255,7 +255,7 @@ function AddExpenseForm({ onSuccess, categories }: { onSuccess: () => void, cate
         placeholder="Select a category"
       />
 
-      <div className="pt-4">
+      <div className="py-8 px-6 lg:px-10 max-w-7xl mx-auto">
         <button type="submit" disabled={submitting} className="w-full bg-sky-500 text-white font-black py-8 rounded-[2.5rem] shadow-xl shadow-sky-500/20 active:scale-95 transition-all text-xl">
           {submitting ? "Processing..." : "Deduct From Fund"}
         </button>
